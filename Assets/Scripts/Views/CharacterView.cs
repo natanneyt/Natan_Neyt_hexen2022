@@ -1,9 +1,6 @@
-using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterView : MonoBehaviour, ICharacter
+public class CharacterView : MonoBehaviour
 {
     [SerializeField]
     private CharacterType _type;
@@ -11,4 +8,7 @@ public class CharacterView : MonoBehaviour, ICharacter
     public CharacterType Type => _type;
 
     public Vector3 WorldPosition => transform.position;
+
+    public Position GridPosition => PositionHelper.GridPosition(transform.position);
+
 }

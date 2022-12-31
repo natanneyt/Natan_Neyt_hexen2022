@@ -1,12 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Tile : MonoBehaviour, IPointerClickHandler
+public class Tile : MonoBehaviour
 {
-    public Position GridPosition => PositionHelper.GridPosition(transform.position.x, transform.position.z);
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        //Debug.Log(GridPosition);
-    }
+    public Position GridPosition => PositionHelper.GridPosition(transform.position);
 }

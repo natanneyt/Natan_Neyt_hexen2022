@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public struct Position
 {
     private readonly int _q;
@@ -9,6 +5,7 @@ public struct Position
     private readonly int _s;
 
     public int Q => _q;
+
     public int R => _r;
 
     public int S => _s;

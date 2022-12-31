@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PositionEventArgs : EventArgs
+public class CardDragEventArgs : EventArgs
 {
     public Position Position { get; }
 
-    public CardType Card { get; }
+    public CardView Card { get; }
 
-    public PositionEventArgs(Position position, CardType card)
+    public CardDragEventArgs(Position position, CardView card)
     {
         Position = position;
         Card = card;
@@ -17,24 +17,38 @@ public class PositionEventArgs : EventArgs
 
 public class BoardView : MonoBehaviour
 {
-    private event EventHandler<PositionEventArgs> PositionSelected;
-    private readonly Dictionary<Position, PositionView> _tiles = new();
+    public event EventHandler<CardDragEventArgs> CardHovering;
 
-    public Action<object, PositionEventArgs> PositionClicked { get; internal set; }
+    public event EventHandler<CardDragEventArgs> CardDropped;
+
+    public readonly Dictionary<Position, TileView> _tiles = new();
 
     private void OnEnable()
     {
-        var tiles = GetComponentsInChildren<PositionView>();
+        var tiles = GetComponentsInChildren<TileView>();
         foreach (var tile in tiles) _tiles.Add(tile.GridPosition, tile);
     }
 
-    internal void ChildSelected(PositionView positionView, CardType card)
-        => OnPositionSelected(new PositionEventArgs(positionView.GridPosition, card));
+    internal void HoveringOverChild(TileView positionView, CardView card)
+        => OnCardHovering(new CardDragEventArgs(positionView.GridPosition, card));
 
-    protected virtual void OnPositionSelected(PositionEventArgs e)
+    internal void DroppedOnChild(TileView positionView, CardView card)
+        => OnCardDropped(new CardDragEventArgs(positionView.GridPosition, card));
+
+    protected virtual void OnCardHovering(CardDragEventArgs e)
     {
-        var handler = PositionSelected;
+        var handler = CardHovering;
         handler?.Invoke(this, e);
     }
-    
+
+    protected virtual void OnCardDropped(CardDragEventArgs e)
+    {
+        var handler = CardDropped;
+        handler?.Invoke(this, e);
+    }
+
+    public void DeactivateAll()
+    {
+        foreach (var tile in _tiles) tile.Value.Deactivate();
+    }
 }
