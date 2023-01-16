@@ -49,10 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d619e7656f11842a887274165fe156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxTotalCards: 12
+  _amountPerCardType: 0
   _maxCurrentCards: 5
   _cards:
   - {fileID: 5986386545056666969, guid: 40920ac9ff46acc4cb65e58df990fe54, type: 3}
   - {fileID: 1985832772422614869, guid: 280d77ccb4c09c244acdae816fd184bc, type: 3}
   - {fileID: 3162222488344786706, guid: f5f37b35436608a4e88ec947a5284dd7, type: 3}
   - {fileID: 5117268792003583744, guid: 1120be74029e7084ab3517f3128c36d0, type: 3}
+  - {fileID: 6210068158219066395, guid: 4a23a23be7c6cdb4398c18efd08d5267, type: 3}

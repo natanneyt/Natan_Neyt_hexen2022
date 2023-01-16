@@ -9,6 +9,7 @@ public class CardView : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public Image Image => GetComponent<Image>();
 
+    [HideInInspector]
     public CardType CardType => _cardType;
 
     private Vector2 _distance;

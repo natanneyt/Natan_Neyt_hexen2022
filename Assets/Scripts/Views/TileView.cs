@@ -13,8 +13,6 @@ public class TileView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private BoardView _parent;
     private Deck _deck;
 
-    private bool _isActive;
-
     public Position GridPosition => PositionHelper.GridPosition(transform.position);
 
     void Start()
@@ -26,13 +24,11 @@ public class TileView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     internal void Activate()
     {
         OnActivate?.Invoke();
-        _isActive = true;
     }
 
     internal void Deactivate()
     {
         OnDeactivate?.Invoke();
-        _isActive = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

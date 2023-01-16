@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -63,6 +64,13 @@ public class GameLoop : MonoBehaviour
             List<TileView> positionViews = card.Positions(e.Position, _currentPosition);
             foreach (TileView positionView in positionViews) positionView.Activate();
         }
+
+        else if (e.Card.CardType == CardType.MeteorCard)
+        {
+            MeteorCard card = new(_board);
+            List<TileView> positionViews = card.Positions(e.Position, _currentPosition);
+            foreach (TileView positionView in positionViews) positionView.Activate();
+        }
     }
 
     private void OnDroppedOnChild(object sender, CardDragEventArgs e)
@@ -108,6 +116,18 @@ public class GameLoop : MonoBehaviour
             RowAttackCard card = new(_board);
             List<TileView> positions = card.NarrowedPositions(e.Position, _currentPosition);
             foreach(CharacterView character in card.Execute(positions, _currentPosition))
+            {
+                Destroy(character.gameObject);
+            }
+            if (positions.Count != 0) _deck.UseCard(e.Card);
+        }
+
+        else if (e.Card.CardType == CardType.MeteorCard)
+        {
+            MeteorCard card = new(_board);
+            List<TileView> positions = card.Positions(e.Position, _currentPosition);
+            List<CharacterView> characters = card.Execute(positions, _currentPosition);
+            foreach (CharacterView character in characters)
             {
                 Destroy(character.gameObject);
             }

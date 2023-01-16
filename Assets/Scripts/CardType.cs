@@ -3,5 +3,6 @@ public enum CardType
     MoveCard,
     PushCard,
     RowAttackCard,
-    SlashCard
+    SlashCard,
+    MeteorCard
 }

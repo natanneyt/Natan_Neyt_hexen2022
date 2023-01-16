@@ -133,6 +133,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 95fa5131b76332046be38fbd494e52ca,
         type: 3}
+    - target: {fileID: 2977149638146213903, guid: a3fd458bbe060e341933b142b862dbc0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977149638146213903, guid: a3fd458bbe060e341933b142b862dbc0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2977149638146213903, guid: a3fd458bbe060e341933b142b862dbc0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6313365040460515295, guid: a3fd458bbe060e341933b142b862dbc0,
         type: 3}
       propertyPath: _cardType
