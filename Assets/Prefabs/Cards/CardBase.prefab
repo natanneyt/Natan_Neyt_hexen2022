@@ -90,3 +90,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardType: 0
+  dragCard: {fileID: 0}
